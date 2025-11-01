@@ -139,7 +139,6 @@ In diesem Projekt ist es mein Ziel, einen **Thin Client** zu erstellen aus beste
     ```bash
     sudo apt update
     sudo apt install remmina remmina-plugin-vnc remmina-plugin-rdp
-    [cite_start]``` [cite: 88, 89]
 3.  [cite_start]**Vorbereitung Homeserver:** Sicherstellen, dass der Homeserver (Supermicro) einen Remote-Zugriffsservice (z.B. SSH, VNC-Server wie `xrdp` oder `vino-server`) installiert und konfiguriert hat. [cite: 90]
 
 #### II.2. Erstellung eines Remote-Profils zum Homeserver
@@ -169,7 +168,6 @@ In diesem Projekt ist es mein Ziel, einen **Thin Client** zu erstellen aus beste
     * Terminal öffnen und RetroArch installieren:
         ```bash
         sudo snap install retroarch
-        [cite_start]``` [cite: 109]
     * [cite_start]*Alternative:* Installation über die offiziellen Paketquellen. [cite: 110]
 2.  **Erster Start und Grundeinrichtung:**
     * RetroArch starten. [cite_start]Standardmäßig wird eine Gamepad-freundliche Oberfläche angezeigt. [cite: 112]
@@ -208,12 +206,10 @@ In diesem Projekt ist es mein Ziel, einen **Thin Client** zu erstellen aus beste
 * **Befehl (Homeserver):**
     ```bash
     sudo apt install samba
-    [cite_start]``` [cite: 134]
 * [cite_start]**Benutzer:** Separate Samba-Benutzer anlegen, die nicht direkt am System angemeldet werden können, aber Zugriff auf die Freigabe erhalten. [cite: 135]
     ```bash
     sudo useradd -s /bin/false -g users -m smbuser
     sudo smbpasswd -a smbuser
-    [cite_start]``` [cite: 137, 138]
 * [cite_start]**Freigabe definieren:** Die Konfigurationsdatei `/etc/samba/smb.conf` bearbeiten und einen Freigabebereich (z.B. `[RetroRoms]`) definieren. [cite: 139]
 
 #### IV.2. Thin Client-Mount der Freigabe
@@ -223,16 +219,13 @@ In diesem Projekt ist es mein Ziel, einen **Thin Client** zu erstellen aus beste
 1.  **Installation des Clients:** Sicherstellen, dass das Samba-Client-Paket installiert ist:
     ```bash
     sudo apt install smbclient cifs-utils
-    [cite_start]``` [cite: 142]
 2.  **Mount-Punkt erstellen:** Ein lokales Verzeichnis als Mount-Punkt erstellen:
     ```bash
     sudo mkdir /mnt/homeserver_roms
-    [cite_start]``` [cite: 143]
 3.  [cite_start]**Permanentes Mounten (fstab):** Die `/etc/fstab` Datei bearbeiten, um die Freigabe automatisch beim Booten zu mounten. [cite: 144]
     ```bash
     //[SERVER_IP]/[FREIGABENAME] /mnt/homeserver_roms cifs credentials=/home/[USER]/.smbcredentials,uid=1000,gid=1000 0 0
-    [cite_start]``` [cite: 146]
-    * [cite_start]*Hinweis:* Die Datei `.smbcredentials` enthält den Benutzernamen und das Passwort für den Samba-Zugriff und muss sicher abgelegt werden. [cite: 147]
+    *Hinweis:* Die Datei `.smbcredentials` enthält den Benutzernamen und das Passwort für den Samba-Zugriff und muss sicher abgelegt werden.
 
 ---
 
